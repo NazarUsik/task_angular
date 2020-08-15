@@ -1,0 +1,23 @@
+<taglib>
+    <tlib-version>1.2</tlib-version>
+    <jsp-version>2.0</jsp-version>
+    <short-name>User List</short-name>
+
+    <tag>
+        <name>userList</name>
+        <tag-class>com.nixsolutions.usik.utils.custom_tag.UserListTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>request</name>
+            <type>javax.servlet.http.HttpServletRequest</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>response</name>
+            <type>javax.servlet.http.HttpServletResponse</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>

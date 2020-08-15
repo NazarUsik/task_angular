@@ -1,0 +1,28 @@
+<Configuration>
+    <Appenders>
+        <RollingFile name="file" fileName="app-info.log"
+                     filePattern="app-info-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
+
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="trace">
+            <AppenderRef ref="file" level="DEBUG"/>
+        </Root>
+        <Logger name="File" level="trace error" additivity="false">
+            <AppenderRef ref="file" level="trace"/>
+        </Logger>
+        <Logger name="com.nixsolutions.usik" level="trace error debug" additivity="false">
+            <AppenderRef ref="console" level="trace"/>
+        </Logger>
+    </Loggers>
+</Configuration>

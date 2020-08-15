@@ -1,0 +1,101 @@
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://ws.usik.nixsolutions.com/"
+        xmlns:nuc="http://ws.usik.nixsolutions.com/"
+        elementFormDefault="qualified">
+
+    <xs:complexType name="User">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="login" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="first_name" type="xs:string"/>
+            <xs:element name="last_name" type="xs:string"/>
+            <xs:element name="birthday" type="xs:date"/>
+            <xs:element name="role_id" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:element name="CreateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" type="nuc:User"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CreateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ResponseMessage" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ReadAllRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="info" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ReadAllResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="users" type="nuc:User" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ReadRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="login" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ReadResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" type="nuc:User"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UpdateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" type="nuc:User"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UpdateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ResponseMessage" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="DeleteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="login" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="DeleteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ResponseMessage" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
