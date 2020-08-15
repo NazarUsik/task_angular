@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-dark my-5">
+        <div class="card-body">
+          <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
+          <ul class="text-center list-inline py-3">
+            <li class="list-inline-item">
+              <a routerLink="/" class="btn btn-info">Home</a>
+            </li>
+            <li [hidden]="user.roleId != '1'" class="list-inline-item">
+              <a routerLink="/add" class="btn btn-info">Add User</a>
+            </li>
+            <li [hidden]="this.logged" class="list-inline-item">
+              <a routerLink="/add" class="btn btn-info">Registration</a>
+            </li>
+            <li [hidden]="!this.logged" class="list-inline-item">
+              <span (click)="onLogout()" class="btn btn-info">Logout</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
