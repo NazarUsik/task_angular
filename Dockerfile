@@ -3,7 +3,7 @@ COPY pom.xml /tmp/
 COPY src/ /tmp/src/
 COPY sql /tmp/sql/
 WORKDIR /tmp/
-RUN mvn clean install site
+RUN mvn install site
 
 FROM tomcat:8
 COPY --from=MAVEN_TOOL_CHAIN /tmp/target/Training-Work*.war /usr/local/tomcat/webapps/ROOT.war
