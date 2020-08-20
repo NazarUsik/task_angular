@@ -21,11 +21,21 @@ export class UserFormComponent {
     {num: 1, name: 'Admin'},
     {num: 2, name: 'User'}
   ];
+  errors = {
+    login: '',
+    password: '',
+    email: '',
+    firstName: '',
+    lastName: '',
+    birthday: '',
+    roleId: ''
+  };
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService) {
+    this.user = new User();
     this.invalid = false;
     const login = getCookie('login');
     this.registration = login === null || login === undefined || login === '';
@@ -56,6 +66,7 @@ export class UserFormComponent {
   }
 
   onSubmit() {
+    this.validate(this.user);
     if (this.login == null) {
       console.log(this.user.roleId);
       this.userService.create(this.user).subscribe(
@@ -79,4 +90,33 @@ export class UserFormComponent {
         error => this.invalid = true);
     }
   }
+
+  validate(values) {
+    if (!values.login) {
+      this.errors.login = 'Enter a Login';
+    }
+
+    if (!values.email) {
+      this.errors.email = 'Enter a Email';
+    }
+
+    if (!values.password) {
+      this.errors.password = 'Enter a Password';
+    } else if (values.password.length < 8) {
+      this.errors.password = 'Enter at least 8 Characters in Password';
+    }
+
+    if (!values.firstName) {
+      this.errors.firstName = 'Enter a First Name';
+    } else if (values.firstName.length <= 1) {
+      this.errors.firstName = 'Enter at least 1 Characters in First Name';
+    }
+
+    if (!values.lastName) {
+      this.errors.lastName = 'Enter a Last Name';
+    } else if (values.lastName.length <= 1) {
+      this.errors.lastName = 'Enter at least 1 Characters in Last Name';
+    }
+  }
+
 }

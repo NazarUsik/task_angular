@@ -40,11 +40,13 @@ export class UserListComponent implements OnInit {
   }
 
   delete(login: string) {
-    const log = getCookie('login');
-    if (login === log) {
-      this.userService.delete(login).subscribe(result => onLogout());
-    } else {
-      this.userService.delete(login).subscribe(result => this.ngOnInit());
+    if (confirm('Are you sure?')) {
+      const log = getCookie('login');
+      if (login === log) {
+        this.userService.delete(login).subscribe(result => onLogout());
+      } else {
+        this.userService.delete(login).subscribe(result => this.ngOnInit());
+      }
     }
   }
 }

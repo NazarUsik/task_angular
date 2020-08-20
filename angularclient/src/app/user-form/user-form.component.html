@@ -13,7 +13,7 @@
                placeholder="Enter login"
                required #login="ngModel">
       </div>
-      <div [hidden]="!login.pristine ||  user.login != null" class="alert alert-danger">Login is required</div>
+      <div [hidden]="(!login.pristine ||  user.login != null) || !this.errors.login" class="alert alert-danger">{{this.errors.login}}</div>
 
       <div class="form-group">
         <label for="password">Password</label>
@@ -24,7 +24,7 @@
                placeholder="Enter password"
                required #password="ngModel">
       </div>
-      <div [hidden]="!password.pristine" class="alert alert-danger">Password is required</div>
+      <div [hidden]="!password.pristine || !this.errors.password" class="alert alert-danger">{{this.errors.password}}</div>
 
       <div class="form-group">
         <label for="email">Email</label>
@@ -34,7 +34,7 @@
                name="email"
                placeholder="Enter email address"
                required #email="ngModel">
-        <div [hidden]="!email.pristine || user.email != null" class="alert alert-danger">Email is required</div>
+        <div [hidden]="(!email.pristine || user.email != null) || !this.errors.email" class="alert alert-danger">{{this.errors.email}}</div>
       </div>
 
       <div class="form-group">
@@ -46,7 +46,7 @@
                placeholder="Enter first name"
                required #firstName="ngModel">
       </div>
-      <div [hidden]="!firstName.pristine || user.email != null" class="alert alert-danger">First Name is required</div>
+      <div [hidden]="(!firstName.pristine || user.email != null) || !this.errors.firstName" class="alert alert-danger">{{this.errors.firstName}}</div>
 
       <div class="form-group">
         <label for="lastName">Last Name</label>
@@ -57,7 +57,7 @@
                placeholder="Enter last name"
                required #lastName="ngModel">
       </div>
-      <div [hidden]="!lastName.pristine || user.email != null" class="alert alert-danger">Last Name is required</div>
+      <div [hidden]="(!lastName.pristine || user.email != null) || !this.errors.lastName" class="alert alert-danger">{{this.errors.lastName}}</div>
 
       <div class="form-group">
         <label for="birthday">Birthday</label>
@@ -67,7 +67,7 @@
                name="birthday"
                required #birthday="ngModel">
       </div>
-      <div [hidden]="!birthday.pristine || user.email != null" class="alert alert-danger">Birthday is required</div>
+      <div [hidden]="!birthday.pristine || user.email != null || !this.errors.birthday" class="alert alert-danger">{{this.errors.birthday}}</div>
 
       <div class="form-group" [hidden]="registration">
         <label for="role">Role</label>
