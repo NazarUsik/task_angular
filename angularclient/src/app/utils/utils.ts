@@ -38,5 +38,4 @@ export function deleteAllCookies() {
 
 export function onLogout() {
   deleteAllCookies();
-  setTimeout(window.location.reload(), 2000);
 }
