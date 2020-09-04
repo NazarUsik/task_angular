@@ -2,7 +2,7 @@
 
 Docker-compose build spring project with REST 
 and SOAP controller in localhost:8080, 
-and run angular project in localhost:4200:
+and run angular project with keyclok in localhost:4200:
 ```
 docker-compose build
 docker-compose up
